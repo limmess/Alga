@@ -1,0 +1,48 @@
+﻿@model Alga.Models.Asmuo
+
+@{
+    ViewBag.Title = "Trinti";
+}
+
+<h2>Trinti</h2>
+
+<h3>Ar tikrai norite ištrinti?</h3>
+<div>
+    <h4>Asmuo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vardas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vardas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pavarde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pavarde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlgaNet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlgaNet)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Trinti" class="btn btn-default" /> |
+            @Html.ActionLink("Atgal į sąrašą", "Index")
+        </div>
+    }
+</div>

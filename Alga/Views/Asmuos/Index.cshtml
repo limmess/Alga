@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Alga.Models.Asmuo>
+
+@{
+    ViewBag.Title = "Sąrašas";
+}
+
+<h2>Sąrašas</h2>
+
+<p>
+    @Html.ActionLink("Sukurti naują", "Create")
+
+    @using (Html.BeginForm("Index", "Asmuos", FormMethod.Get))
+    {
+    <p>
+        Paieška: @Html.TextBox("SearchString") 
+        <input type="submit" value="Filtras" />
+    </p>
+    }
+
+    <br /><br />
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Vardas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pavarde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlgaNet)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vardas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pavarde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlgaNet)
+        </td>
+        <td>
+            @Html.ActionLink("Redaguoti", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detaliau", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Trinti", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
