@@ -12,6 +12,6 @@ namespace Alga.Models
         public string Vardas { get; set; }
         public string Pavarde { get; set; }
         public int AlgaNet { get; set; }
-
+        //jou
     }
 }
