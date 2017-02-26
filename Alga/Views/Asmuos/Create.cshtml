@@ -1,4 +1,5 @@
-﻿@model Alga.Models.Asmuo
+﻿@using System.Activities.Expressions
+@model Alga.Models.Asmuo
 
 @{
     ViewBag.Title = "Sukurti";
@@ -31,10 +32,10 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AlgaNet, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group" >
+            @Html.LabelFor(model => model.AlgaNet, htmlAttributes: new { @class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AlgaNet, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.AlgaNet, new { htmlAttributes = new { @class = "form-control", data_val = "false" } })
                 @Html.ValidationMessageFor(model => model.AlgaNet, "", new { @class = "text-danger" })
             </div>
         </div>

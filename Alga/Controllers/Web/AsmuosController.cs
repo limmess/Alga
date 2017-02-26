@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Alga.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Alga.Models;
 
 namespace Alga.Controllers
 {
@@ -22,7 +20,7 @@ namespace Alga.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                vardai = vardai.Where(s => s.Vardas.Contains(searchString)||s.Pavarde.Contains(searchString));
+                vardai = vardai.Where(s => s.Vardas.Contains(searchString) || s.Pavarde.Contains(searchString));
             }
 
             return View(vardai);

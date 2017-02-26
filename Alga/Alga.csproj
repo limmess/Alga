@@ -167,11 +167,19 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AsmuosController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Web\AccountController.cs" />
+    <Compile Include="Controllers\Web\AsmuosController.cs" />
+    <Compile Include="Controllers\Web\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702261225502_ChangeZmonesProps.cs" />
+    <Compile Include="Migrations\201702261225502_ChangeZmonesProps.Designer.cs">
+      <DependentUpon>201702261225502_ChangeZmonesProps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702261248504_ChangeZmonesAlgaFloat.cs" />
+    <Compile Include="Migrations\201702261248504_ChangeZmonesAlgaFloat.Designer.cs">
+      <DependentUpon>201702261248504_ChangeZmonesAlgaFloat.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -243,6 +251,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -251,6 +260,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702261225502_ChangeZmonesProps.resx">
+      <DependentUpon>201702261225502_ChangeZmonesProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702261248504_ChangeZmonesAlgaFloat.resx">
+      <DependentUpon>201702261248504_ChangeZmonesAlgaFloat.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
