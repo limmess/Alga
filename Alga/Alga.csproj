@@ -181,9 +181,14 @@
     <Compile Include="Migrations\201702261248504_ChangeZmonesAlgaFloat.Designer.cs">
       <DependentUpon>201702261248504_ChangeZmonesAlgaFloat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702272104443_SeedUsers.cs" />
+    <Compile Include="Migrations\201702272104443_SeedUsers.Designer.cs">
+      <DependentUpon>201702272104443_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AlgaContext.cs" />
+    <Compile Include="Models\AlgaGross.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Zmones.cs" />
@@ -422,7 +427,8 @@
     <Content Include="Views\Asmuos\Delete.cshtml" />
     <Content Include="Views\Asmuos\Details.cshtml" />
     <Content Include="Views\Asmuos\Edit.cshtml" />
-    <Content Include="Views\Asmuos\Index.cshtml" />
+    <Content Include="Views\Asmuos\IndexAdmin.cshtml" />
+    <Content Include="Views\Asmuos\IndexGuest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\Api\" />
@@ -441,6 +447,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702261248504_ChangeZmonesAlgaFloat.resx">
       <DependentUpon>201702261248504_ChangeZmonesAlgaFloat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702272104443_SeedUsers.resx">
+      <DependentUpon>201702272104443_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

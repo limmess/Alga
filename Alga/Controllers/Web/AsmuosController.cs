@@ -14,6 +14,7 @@ namespace Alga.Controllers
         // GET: Asmuos
         public ActionResult Index(string searchString)
         {
+
             var vardai = from v in db.Asmuos
                          select v;
 
@@ -23,7 +24,10 @@ namespace Alga.Controllers
 
             }
 
-            return View(vardai);
+            if (User.IsInRole("Admin"))
+                return View("IndexAdmin", vardai);
+
+            return View("IndexGuest", vardai);
         }
 
 
@@ -43,6 +47,7 @@ namespace Alga.Controllers
         }
 
         // GET: Asmuos/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -51,8 +56,11 @@ namespace Alga.Controllers
         // POST: Asmuos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,Vardas,Pavarde,AlgaNet")] Asmuo asmuo)
         {
             if (ModelState.IsValid)
@@ -96,7 +104,9 @@ namespace Alga.Controllers
             return View(asmuo);
         }
 
+
         // GET: Asmuos/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
