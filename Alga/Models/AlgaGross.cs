@@ -1,31 +1,30 @@
-﻿//namespace Alga.Models
-//{
-//    public class AlgaGross
-//    {
+﻿using System;
 
-//        public static float AlgaGrossCalculate(float algaNet)
-//        {
+namespace Alga.Models
+{
+    public static class AlgaGross
+    {
+        public static decimal Gross(decimal y, int pnpd)
+        {
+            decimal x = (y - 75 - 30m * pnpd) / 0.685m;
 
-//            float pritaikytasNPD;
-//            float pritaikytasPNPD = 0;
-//            float pajamuMokestis_15 = 15F;
-//            float sveikatosDraudimas_6 = 6F;
-//            float papildomaPensija_3 = 3F;
-//            float sodra_31 = 31.18F;
-//            float algaGross = 0;
+            decimal npd = 310 - 0.5m * (x - 380m);
+            if (npd >= 310m) npd = 310m;
+            if (npd <= 0m) npd = 0m;
 
-//            pritaikytasNPD = 380 - 0.5F * (algaGross - 380);
-//            var rankos = algaGross - (algaGross - (380 - 0.5F * (algaGross - 380)) - pritaikytasPNPD) * pajamuMokestis_15 - algaGross * sveikatosDraudimas_6 - algaGross * papildomaPensija_3;
+            decimal s = (x - npd - 200m * pnpd) * 0.15m;
+            if (s <= 0m) s = 0m;
 
-
-//            return algaGross;
-
-//        }
+            decimal gross = (y + s) / 0.91m;
+            decimal grossRound = Math.Round(gross, 2, MidpointRounding.AwayFromZero);
+            return grossRound;
+        }
 
 
 
-//    }
-//}
+
+    }
+}
 
 
 //Gyventojui taikytino NPD dydžio formulė(2017):

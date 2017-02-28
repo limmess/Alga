@@ -181,9 +181,17 @@
     <Compile Include="Migrations\201702261248504_ChangeZmonesAlgaFloat.Designer.cs">
       <DependentUpon>201702261248504_ChangeZmonesAlgaFloat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702272104443_SeedUsers.cs" />
-    <Compile Include="Migrations\201702272104443_SeedUsers.Designer.cs">
-      <DependentUpon>201702272104443_SeedUsers.cs</DependentUpon>
+    <Compile Include="Migrations\201702281722251_AsmuosFloatToDecimal.cs" />
+    <Compile Include="Migrations\201702281722251_AsmuosFloatToDecimal.Designer.cs">
+      <DependentUpon>201702281722251_AsmuosFloatToDecimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702281744420_AddAuginaVaikusVienas.cs" />
+    <Compile Include="Migrations\201702281744420_AddAuginaVaikusVienas.Designer.cs">
+      <DependentUpon>201702281744420_AddAuginaVaikusVienas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702281808394_AddVaikuSkaicius.cs" />
+    <Compile Include="Migrations\201702281808394_AddVaikuSkaicius.Designer.cs">
+      <DependentUpon>201702281808394_AddVaikuSkaicius.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -315,7 +323,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
-    <Content Include="App_Data\Lithuanian.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -431,6 +438,7 @@
     <Content Include="Views\Asmuos\IndexGuest.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Controllers\Api\" />
   </ItemGroup>
   <ItemGroup>
@@ -448,8 +456,14 @@
     <EmbeddedResource Include="Migrations\201702261248504_ChangeZmonesAlgaFloat.resx">
       <DependentUpon>201702261248504_ChangeZmonesAlgaFloat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702272104443_SeedUsers.resx">
-      <DependentUpon>201702272104443_SeedUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702281722251_AsmuosFloatToDecimal.resx">
+      <DependentUpon>201702281722251_AsmuosFloatToDecimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702281744420_AddAuginaVaikusVienas.resx">
+      <DependentUpon>201702281744420_AddAuginaVaikusVienas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702281808394_AddVaikuSkaicius.resx">
+      <DependentUpon>201702281808394_AddVaikuSkaicius.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

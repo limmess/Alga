@@ -7,13 +7,13 @@ namespace Alga.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class SeedUsers : IMigrationMetadata
+    public sealed partial class AddAuginaVaikusVienas : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedUsers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddAuginaVaikusVienas));
         
         string IMigrationMetadata.Id
         {
-            get { return "201702272104443_SeedUsers"; }
+            get { return "201702281744420_AddAuginaVaikusVienas"; }
         }
         
         string IMigrationMetadata.Source

@@ -43,6 +43,8 @@ namespace Alga.Controllers
             {
                 return HttpNotFound();
             }
+
+
             return View(asmuo);
         }
 
@@ -61,7 +63,7 @@ namespace Alga.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "Id,Vardas,Pavarde,AlgaNet")] Asmuo asmuo)
+        public ActionResult Create([Bind(Include = "Id,Vardas,Pavarde,AlgaNet,VaikuSkaicius,AuginaVaikusVienas,AlgaGross")] Asmuo asmuo)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +95,7 @@ namespace Alga.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Vardas,Pavarde,AlgaNet")] Asmuo asmuo)
+        public ActionResult Edit([Bind(Include = "Id,Vardas,Pavarde,AlgaNet,VaikuSkaicius,AuginaVaikusVienas,AlgaGross")] Asmuo asmuo)
         {
             if (ModelState.IsValid)
             {

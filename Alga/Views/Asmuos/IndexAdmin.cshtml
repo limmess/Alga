@@ -1,4 +1,6 @@
 ﻿@using System.Activities.Expressions
+@using Alga.Controllers
+@using Alga.Models
 @model IEnumerable<Alga.Models.Asmuo>
 
 @{
@@ -6,6 +8,9 @@
 }
 
 <h2>Sąrašas</h2>
+
+
+
 
 @Html.ActionLink("Sukurti naują", "Create")
 
@@ -17,7 +22,6 @@
             <input type="submit" value="Filtras" />
         </p>
     }
-    
 *@
 <div><p></p></div>
 
@@ -26,7 +30,7 @@
         <tr>
             <th>@Html.DisplayNameFor(model => model.Vardas)</th>
             <th>@Html.DisplayNameFor(model => model.Pavarde)</th>
-            <th>@Html.DisplayNameFor(model => model.AlgaNet)</th>
+            <th>@Html.DisplayNameFor(model => model.AlgaGross)</th>
             <th>Veiksmai</th>
         </tr>
     </thead>
@@ -42,8 +46,8 @@
                 @Html.DisplayFor(modelItem => item.Pavarde)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AlgaNet)
-            </td>
+                @Html.DisplayFor(modelItem => item.AlgaGross)
+             </td>
             <td>
                 @Html.ActionLink("Redaguoti", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Detaliau", "Details", new { id = item.Id }) |
