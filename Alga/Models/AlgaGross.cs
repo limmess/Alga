@@ -18,7 +18,7 @@ namespace Alga.Models
             if (npd >= 310m) npd = 310m;
             if (npd <= 0m) npd = 0m;
 
-            decimal s = (x - npd - childrenNo * pnpd) * 0.15m;
+            decimal s = (0.15m * salaryNet - 0.1365m * (npd + pnpd * childrenNo)) / 0.76m;
             if (s <= 0m) s = 0m;
 
             decimal gross = (salaryNet + s) / 0.91m;
