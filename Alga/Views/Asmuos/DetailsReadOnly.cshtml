@@ -1,12 +1,11 @@
-ï»¿@model Alga.Models.Asmuo
+@model Alga.Models.Asmuo
 
 @{
-    ViewBag.Title = "Trinti";
+    ViewBag.Title = "Details";
 }
 
-<h2>Trinti</h2>
+<h2>Detaliau</h2>
 
-<h3>Ar tikrai norite iÅ¡trinti?</h3>
 <div>
     <h4>Asmuo</h4>
     <hr />
@@ -48,15 +47,12 @@
         <dd>
             @Html.DisplayFor(model => model.AuginaVaikusVienas)
         </dd>
+        
+        
+        
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Trinti" class="btn btn-default" /> |
-            @Html.ActionLink("Atgal Ä¯ sÄ…raÅ¡Ä…", "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Atgal á sàraðà", "Index")
+</p>

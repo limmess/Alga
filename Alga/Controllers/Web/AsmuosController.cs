@@ -11,10 +11,11 @@ namespace Alga.Controllers
     {
         private AlgaContext db = new AlgaContext();
 
+
+
         // GET: Asmuos
         public ActionResult Index(string searchString)
         {
-
             var vardai = from v in db.Asmuos
                          select v;
 
@@ -24,7 +25,7 @@ namespace Alga.Controllers
 
             }
 
-            if (User.IsInRole("Admin"))
+            if (User.IsInRole(RoleName.Admin))
                 return View("IndexAdmin", vardai);
 
             return View("IndexGuest", vardai);
@@ -43,13 +44,14 @@ namespace Alga.Controllers
             {
                 return HttpNotFound();
             }
+            if (User.IsInRole(RoleName.Admin))
+                return View(asmuo);
 
-
-            return View(asmuo);
+            return View("DetailsReadOnly", asmuo);
         }
 
         // GET: Asmuos/Create
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create()
         {
             return View();
@@ -62,7 +64,7 @@ namespace Alga.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create([Bind(Include = "Id,Vardas,Pavarde,AlgaNet,VaikuSkaicius,AuginaVaikusVienas,AlgaGross")] Asmuo asmuo)
         {
             if (ModelState.IsValid)
@@ -76,6 +78,7 @@ namespace Alga.Controllers
         }
 
         // GET: Asmuos/Edit/5
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,6 +98,7 @@ namespace Alga.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Edit([Bind(Include = "Id,Vardas,Pavarde,AlgaNet,VaikuSkaicius,AuginaVaikusVienas,AlgaGross")] Asmuo asmuo)
         {
             if (ModelState.IsValid)
@@ -108,7 +112,7 @@ namespace Alga.Controllers
 
 
         // GET: Asmuos/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -126,6 +130,7 @@ namespace Alga.Controllers
         // POST: Asmuos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult DeleteConfirmed(int id)
         {
             Asmuo asmuo = db.Asmuos.Find(id);

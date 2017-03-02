@@ -14,7 +14,8 @@
         <tr>
             <th>@Html.DisplayNameFor(model => model.Vardas)</th>
             <th>@Html.DisplayNameFor(model => model.Pavarde)</th>
-            <th>@Html.DisplayNameFor(model => model.AlgaNet)</th>
+            <th>@Html.DisplayNameFor(model => model.AlgaGross)</th>
+            <th>Veiksmai</th>
             </tr>
     </thead>
     <tbody>
@@ -29,7 +30,10 @@
                 @Html.DisplayFor(modelItem => item.Pavarde)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AlgaNet)
+                @Html.DisplayFor(modelItem => item.AlgaGross)
+            </td>
+            <td>
+                @Html.ActionLink("Detaliau", "Details", new { id = item.Id })
             </td>
             </tr>
         }
@@ -42,27 +46,15 @@
     <script>
         $(document).ready(function() {
             $("#table_id").DataTable({
-                language: {
-                    sEmptyTable: "Lentelėje nėra duomenų",
-                    sInfo: "Rodomi įrašai nuo _START_ iki _END_ iš _TOTAL_ įrašų",
-                    sInfoEmpty: "Rodomi įrašai nuo 0 iki 0 iš 0",
-                    sInfoFiltered: "(atrinkta iš _MAX_ įrašų)",
-                    sInfoPostFix: "",
-                    sInfoThousands: " ",
-                    sLengthMenu: "Rodyti _MENU_ įrašus",
-                    sLoadingRecords: "Įkeliama...",
-                    sProcessing: "Apdorojama...",
-                    sSearch: "Ieškoti:",
-                    sThousands: " ",
-                    sUrl: "",
-                    sZeroRecords: "Įrašų nerasta",
-
-                    oPaginate: {
-                        sFirst: "Pirmas",
-                        sPrevious: "Ankstesnis",
-                        sNext: "Tolimesnis",
-                        sLast: "Paskutinis"
+                columnsDefs: [
+                    {
+                        targets: 2,
+                        type: "num-fmt"
+                     
                     }
+                ],
+                language: {
+                    decimal: ","
                 }
             });
         })

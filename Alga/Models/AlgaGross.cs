@@ -4,18 +4,24 @@ namespace Alga.Models
 {
     public static class AlgaGross
     {
-        public static decimal Gross(decimal y, int pnpd)
+        public static decimal Gross(decimal salaryNet, int childrenNo, bool raisesAlone)
         {
-            decimal x = (y - 75 - 30m * pnpd) / 0.685m;
+            decimal pnpd = 100;
+            if (raisesAlone == true)
+            {
+                pnpd = 200;
+            }
+
+            decimal x = (salaryNet - 75 - 0.15m * childrenNo * pnpd) / 0.685m;
 
             decimal npd = 310 - 0.5m * (x - 380m);
             if (npd >= 310m) npd = 310m;
             if (npd <= 0m) npd = 0m;
 
-            decimal s = (x - npd - 200m * pnpd) * 0.15m;
+            decimal s = (x - npd - childrenNo * pnpd) * 0.15m;
             if (s <= 0m) s = 0m;
 
-            decimal gross = (y + s) / 0.91m;
+            decimal gross = (salaryNet + s) / 0.91m;
             decimal grossRound = Math.Round(gross, 2, MidpointRounding.AwayFromZero);
             return grossRound;
         }

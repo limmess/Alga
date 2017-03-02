@@ -199,6 +199,7 @@
     <Compile Include="Models\AlgaGross.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Zmones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -436,6 +437,7 @@
     <Content Include="Views\Asmuos\Edit.cshtml" />
     <Content Include="Views\Asmuos\IndexAdmin.cshtml" />
     <Content Include="Views\Asmuos\IndexGuest.cshtml" />
+    <Content Include="Views\Asmuos\DetailsReadOnly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
