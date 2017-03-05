@@ -24,6 +24,7 @@ namespace Alga.Models
         [Display(Name = "Number of Children")]
         public int VaikuSkaicius { get; set; }
 
+        [Display(Name = "Raises Children Alone")]
         public bool AuginaVaikusVienas { get; set; }
 
 
@@ -32,7 +33,7 @@ namespace Alga.Models
         public decimal AlgaGross => Models.AlgaGross.Gross(AlgaNet, VaikuSkaicius, AuginaVaikusVienas);
 
 
-        [Display(Name = "Avatar (JPG of max 500kb)")]
+        [Display(Name = "Avatar")]
         public byte[] AsmuoImage { get; set; }
 
 

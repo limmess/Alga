@@ -7,7 +7,7 @@
 <h2>Redaguoti</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Asmuos", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -58,6 +58,22 @@
                 </label>
             </div>
         </div>
+        
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.AsmuoImage, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                (JPG of max 500kb)
+                <input type="file" name="asmuoImage" id="Avatar" />
+                @Html.ValidationMessageFor(model => model.AsmuoImage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        
+        
+        
+        
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

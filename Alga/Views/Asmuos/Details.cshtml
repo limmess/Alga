@@ -17,7 +17,7 @@
         </dt>
 
         <dd>
-            <img src="@Url.Action("GetImage", "Asmuos", new { Model.Id })" alt="Artwork Image" width="200" />
+            <img src="@Url.Action("GetImage", "Asmuos", new { Model.Id })" alt="EmployeeImage" width="200" />
         </dd>
         
 
@@ -43,6 +43,13 @@
 
         <dd>
             @Html.DisplayFor(model => model.AlgaNet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlgaGross)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlgaGross)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.VaikuSkaicius)

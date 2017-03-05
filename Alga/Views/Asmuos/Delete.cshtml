@@ -11,6 +11,15 @@
     <h4>Asmuo</h4>
     <hr />
     <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.AsmuoImage)
+        </dt>
+
+        <dd>
+            <img src="@Url.Action("GetImage", "Asmuos", new { Model.Id })" alt="EmployeeImage" width="200" />
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Vardas)
         </dt>
