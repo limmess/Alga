@@ -202,7 +202,6 @@
     <Compile Include="Models\AlgaContext.cs" />
     <Compile Include="Models\AlgaGross.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\IsImageFileValid.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Zmones.cs" />

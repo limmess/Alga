@@ -68,43 +68,29 @@ namespace Alga.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.Admin)]
-        public ActionResult Create([Bind(Include = "Id,Vardas,Pavarde,AlgaNet,VaikuSkaicius,AuginaVaikusVienas,AlgaGross", Exclude = "AsmuoImage")] Asmuo asmuo, HttpPostedFileBase asmuoImage)
+        public ActionResult Create(
+            [Bind(Include = "Id,Vardas,Pavarde,AlgaNet,VaikuSkaicius,AuginaVaikusVienas,AlgaGross", Exclude = "AsmuoImage")]
+        Asmuo asmuo, HttpPostedFileBase asmuoImage)
+
         {
+            if (!ModelState.IsValid) return View(asmuo);
 
-            if (ModelState.IsValid)
+            var fileExt = Path.GetExtension(asmuoImage.FileName);
+            if (asmuoImage != null
+                && asmuoImage.ContentLength > 0
+                && asmuoImage.ContentLength < 512000
+                && fileExt.ToLower().EndsWith(".jpg")
+                && IsFileImage(asmuoImage))
             {
-
-
-                if (asmuoImage != null && asmuoImage.ContentLength > 0 && asmuoImage.ContentLength < 512000)
-                {
-                    //string pic = System.IO.Path.GetFileName(asmuoImage.FileName);
-                    //string path = System.IO.Path.GetDirectoryName(asmuoImage.FileName);
-                    //var type = System.IO.Path.GetFullPath(asmuoImage.FileName);
-                    //var extension = asmuoImage.ContentType;
-                    //var imageName = asmuoImage.FileName;
-                    var fileExt = Path.GetExtension(asmuoImage.FileName);
-                    if (fileExt.ToLower().EndsWith(".jpg"))
-                    {
-
-                    }
-
-                    BinaryReader reader = new BinaryReader(asmuoImage.InputStream);
-                    asmuo.AsmuoImage = reader.ReadBytes(asmuoImage.ContentLength);
-                }
-                else
-                {
-
-                    return View(asmuo);
-                }
-
-
-
+                BinaryReader reader = new BinaryReader(asmuoImage.InputStream);
+                asmuo.AsmuoImage = reader.ReadBytes(asmuoImage.ContentLength);
                 db.Asmuos.Add(asmuo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(asmuo);
+
+
         }
 
         // GET: Asmuos/Edit/5
@@ -183,7 +169,6 @@ namespace Alga.Controllers
             Asmuo asmuo = db.Asmuos.Find(id);
             if (asmuo != null)
             {
-
                 byte[] imgBytes = asmuo.AsmuoImage;
                 return File(asmuo.AsmuoImage, ".jpg");
             }
@@ -194,27 +179,25 @@ namespace Alga.Controllers
         }
 
 
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Asmuo asmuo = db.Asmuos.Find(id);
-        //    if (asmuo == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    if (User.IsInRole(RoleName.Admin))
-        //        return View(asmuo);
-
-        //    return View("DetailsReadOnly", asmuo);
-        //}
 
 
-
-
-
+        public bool IsFileImage(HttpPostedFileBase file) //Check's if uploaded file is an image
+        {
+            bool result;
+            try
+            {
+                System.Drawing.Image imgInput = System.Drawing.Image.FromStream(file.InputStream);
+                System.Drawing.Graphics gInput = System.Drawing.Graphics.FromImage(imgInput);
+                System.Drawing.Imaging.ImageFormat thisFormat = imgInput.RawFormat;
+                file.InputStream.Position = 0; //reset InputStream  reader position to 0
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
+        }
 
     }
 }
