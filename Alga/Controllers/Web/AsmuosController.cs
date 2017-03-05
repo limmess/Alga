@@ -1,9 +1,12 @@
 ﻿using Alga.Models;
 using System;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+
 
 namespace Alga.Controllers
 {
@@ -65,10 +68,37 @@ namespace Alga.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.Admin)]
-        public ActionResult Create([Bind(Include = "Id,Vardas,Pavarde,AlgaNet,VaikuSkaicius,AuginaVaikusVienas,AlgaGross")] Asmuo asmuo)
+        public ActionResult Create([Bind(Include = "Id,Vardas,Pavarde,AlgaNet,VaikuSkaicius,AuginaVaikusVienas,AlgaGross", Exclude = "AsmuoImage")] Asmuo asmuo, HttpPostedFileBase asmuoImage)
         {
+
             if (ModelState.IsValid)
             {
+
+
+                if (asmuoImage != null && asmuoImage.ContentLength > 0 && asmuoImage.ContentLength < 512000)
+                {
+                    //string pic = System.IO.Path.GetFileName(asmuoImage.FileName);
+                    //string path = System.IO.Path.GetDirectoryName(asmuoImage.FileName);
+                    //var type = System.IO.Path.GetFullPath(asmuoImage.FileName);
+                    //var extension = asmuoImage.ContentType;
+                    //var imageName = asmuoImage.FileName;
+                    var fileExt = Path.GetExtension(asmuoImage.FileName);
+                    if (fileExt.ToLower().EndsWith(".jpg"))
+                    {
+
+                    }
+
+                    BinaryReader reader = new BinaryReader(asmuoImage.InputStream);
+                    asmuo.AsmuoImage = reader.ReadBytes(asmuoImage.ContentLength);
+                }
+                else
+                {
+
+                    return View(asmuo);
+                }
+
+
+
                 db.Asmuos.Add(asmuo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -99,7 +129,7 @@ namespace Alga.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.Admin)]
-        public ActionResult Edit([Bind(Include = "Id,Vardas,Pavarde,AlgaNet,VaikuSkaicius,AuginaVaikusVienas,AlgaGross")] Asmuo asmuo)
+        public ActionResult Edit([Bind(Include = "Id,Vardas,Pavarde,AlgaNet,VaikuSkaicius,AuginaVaikusVienas,AlgaGross,AsmuoImage")] Asmuo asmuo, HttpPostedFileBase asmuoImage)
         {
             if (ModelState.IsValid)
             {
@@ -147,5 +177,44 @@ namespace Alga.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public FileContentResult GetImage(int id)
+        {
+            Asmuo asmuo = db.Asmuos.Find(id);
+            if (asmuo != null)
+            {
+
+                byte[] imgBytes = asmuo.AsmuoImage;
+                return File(asmuo.AsmuoImage, ".jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Asmuo asmuo = db.Asmuos.Find(id);
+        //    if (asmuo == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    if (User.IsInRole(RoleName.Admin))
+        //        return View(asmuo);
+
+        //    return View("DetailsReadOnly", asmuo);
+        //}
+
+
+
+
+
+
     }
 }

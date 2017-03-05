@@ -193,11 +193,16 @@
     <Compile Include="Migrations\201702281808394_AddVaikuSkaicius.Designer.cs">
       <DependentUpon>201702281808394_AddVaikuSkaicius.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703022109130_AddAsmuoImage.cs" />
+    <Compile Include="Migrations\201703022109130_AddAsmuoImage.Designer.cs">
+      <DependentUpon>201703022109130_AddAsmuoImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AlgaContext.cs" />
     <Compile Include="Models\AlgaGross.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IsImageFileValid.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Zmones.cs" />
@@ -442,6 +447,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Api\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -466,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702281808394_AddVaikuSkaicius.resx">
       <DependentUpon>201702281808394_AddVaikuSkaicius.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703022109130_AddAsmuoImage.resx">
+      <DependentUpon>201703022109130_AddAsmuoImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

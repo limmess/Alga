@@ -30,6 +30,12 @@ namespace Alga.Models
         [Display(Name = "Salary Gross")]
         [DataType(DataType.Currency)]
         public decimal AlgaGross => Models.AlgaGross.Gross(AlgaNet, VaikuSkaicius, AuginaVaikusVienas);
+
+        //[IsImageFileValid]
+        [Display(Name = "Avatar (JPG of max 500kb)")]
+        public byte[] AsmuoImage { get; set; }
+
+
     }
 
 }
