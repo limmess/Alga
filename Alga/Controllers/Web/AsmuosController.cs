@@ -84,9 +84,17 @@ namespace Alga.Controllers
                         BinaryReader reader = new BinaryReader(asmuoImage.InputStream);
                         asmuo.AsmuoImage = reader.ReadBytes(asmuoImage.ContentLength);
                     }
-                    else return View(asmuo);
+                    else
+                    {
+                        ViewBag.Error = "Picture is not JPG";
+                        return View();
+                    }
                 }
-                else return View(asmuo);
+                else
+                {
+                    ViewBag.Error = "Picture is bigger than 500kb";
+                    return View(asmuo);
+                }
             }
 
 
@@ -137,9 +145,17 @@ namespace Alga.Controllers
                         asmuo.AsmuoImage = reader.ReadBytes(asmuoImage.ContentLength);
                         asmuoInDb.AsmuoImage = asmuo.AsmuoImage;
                     }
-                    else return View(asmuo);
+                    else
+                    {
+                        ViewBag.Error = "Picture is not JPG";
+                        return View();
+                    }
                 }
-                else return View(asmuo);
+                else
+                {
+                    ViewBag.Error = "Picture is bigger than 500kb";
+                    return View(asmuo);
+                }
             }
 
             asmuoInDb.Vardas = asmuo.Vardas;

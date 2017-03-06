@@ -65,7 +65,8 @@
             <div class="col-md-10">
                 (JPG of max 500kb)
                 <input type="file" name="asmuoImage" id="Avatar"/>
-                @Html.ValidationMessageFor(model => model.AsmuoImage, "", new {@class = "text-danger"})
+                <p class = "text-danger">@ViewBag.Error</p>
+                @*@Html.ValidationMessageFor(model => model.AsmuoImage, "", new {@class = "text-danger"})*@
             </div>
         </div>
         
