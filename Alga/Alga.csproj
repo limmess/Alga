@@ -170,6 +170,7 @@
     <Compile Include="Controllers\Web\AccountController.cs" />
     <Compile Include="Controllers\Web\AsmuosController.cs" />
     <Compile Include="Controllers\Web\ManageController.cs" />
+    <Compile Include="Controllers\Web\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -442,6 +443,10 @@
     <Content Include="Views\Asmuos\IndexAdmin.cshtml" />
     <Content Include="Views\Asmuos\IndexGuest.cshtml" />
     <Content Include="Views\Asmuos\DetailsReadOnly.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\ManageUserRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
