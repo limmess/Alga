@@ -111,14 +111,24 @@ namespace Alga.Controllers.Web
         public ActionResult RoleAddToUser(string UserName, string RoleName)
         {
             ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            var account = new AccountController();
-            account.UserManager.AddToRole(user.Id, RoleName);
+            UserManager<ApplicationUser> account = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            account.AddToRole(user.Id, RoleName);
+
+            //var account = new AccountController();
+            //account.UserManager.AddToRole(user.Id, RoleName);
 
             ViewBag.ResultMessage = "Role created successfully !";
 
             // prepopulat roles for the view dropdown
             var list = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
             ViewBag.Roles = list;
+
+            var userNames =
+                _context.Users.OrderBy(u => u.UserName)
+                    .ToList()
+                    .Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName })
+                    .ToList();
+            ViewBag.UserNames = userNames;
 
             return View("ManageUserRoles");
         }
@@ -156,12 +166,15 @@ namespace Alga.Controllers.Web
         [ValidateAntiForgeryToken]
         public ActionResult DeleteRoleForUser(string UserName, string RoleName)
         {
-            var account = new AccountController();
+            //var account = new AccountController();
+
+            UserManager<ApplicationUser> account = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+
             ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
 
-            if (account.UserManager.IsInRole(user.Id, RoleName))
+            if (account.IsInRole(user.Id, RoleName))
             {
-                account.UserManager.RemoveFromRole(user.Id, RoleName);
+                account.RemoveFromRole(user.Id, RoleName);
                 ViewBag.ResultMessage = "Role removed from this user successfully !";
             }
             else
@@ -171,6 +184,13 @@ namespace Alga.Controllers.Web
             // prepopulat roles for the view dropdown
             var list = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
             ViewBag.Roles = list;
+
+            var userNames =
+                _context.Users.OrderBy(u => u.UserName)
+                    .ToList()
+                    .Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName })
+                    .ToList();
+            ViewBag.UserNames = userNames;
 
             return View("ManageUserRoles");
         }
